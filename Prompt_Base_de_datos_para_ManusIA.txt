@@ -1,0 +1,289 @@
+# BRIEF — Construcción de base de datos funcional y bibliográfica curada para genes core UP y DOWN en estrés osmótico
+
+## Contexto del proyecto
+
+Estoy desarrollando un Trabajo de Fin de Grado (TFG) en biología molecular vegetal enfocado en la identificación y caracterización funcional de genes core implicados en la respuesta al estrés osmótico (sequía y salinidad) en plantas.
+
+Voy a proporcionarte dos archivos CSV independientes:
+
+* **UP_genes.csv** → genes up-regulated
+* **DOWN_genes.csv** → genes down-regulated
+
+Ambos archivos contienen genes core previamente filtrados a partir de análisis transcriptómicos (RNA-Seq).
+
+El objetivo es construir una base de datos científica curada y completamente trazable para poder analizar posteriormente la función de estos genes y los procesos biológicos implicados.
+
+Por ahora NO quiero construir un modelo biológico; solo quiero recopilar información funcional y bibliográfica sólida.
+
+---
+
+# INPUT
+
+Cada CSV contiene únicamente:
+
+* **Gene_ID**
+* **gene_annotation**
+
+Debes usar ambos campos para identificar correctamente cada gen.
+
+Si la anotación contiene IDs de UniProt, TAIR, InterPro, NCBI u otras bases funcionales, debes utilizarlos como referencia principal.
+
+---
+
+# OBJETIVO PRINCIPAL
+
+Construir tres bases de datos independientes:
+
+## 1. Base de datos funcional y bibliográfica para genes UP
+
+## 2. Base de datos funcional y bibliográfica para genes DOWN
+
+## 3. Base de datos bibliográfica general sobre estrés osmótico
+
+Las bases UP y DOWN deben mantenerse separadas durante todo el análisis.
+
+---
+
+# PARTE 1 — Identificación funcional inicial de cada gen
+
+Para cada gen de ambos archivos:
+
+Realizar primero un barrido en bases funcionales para identificar el gen correctamente.
+
+## Fuentes funcionales permitidas
+
+* UniProt
+* InterPro
+* Gene Ontology (GO)
+* KEGG
+* Ensembl Plants
+* TAIR
+* NCBI Gene
+
+---
+
+## Información que debes extraer
+
+Para cada gen:
+
+* Gene_ID
+* Nombre probable
+* Familia proteica
+* Dominios conservados
+* Función molecular
+* Procesos biológicos asociados
+* Pathways
+* Ortólogos relevantes
+* Nivel de confianza de identificación
+
+---
+
+## Reglas importantes
+
+* No inventar funciones.
+* Si la identificación es ambigua, indicarlo.
+* Diferenciar entre:
+
+  * función confirmada
+  * función inferida por homología
+  * función inferida por dominios
+
+---
+
+# PARTE 2 — Búsqueda bibliográfica específica por gen
+
+Una vez identificado cada gen:
+
+Buscar artículos científicos que hablen específicamente de:
+
+* ese gen
+* su familia génica
+* sus ortólogos claros
+* proteínas funcionalmente equivalentes
+
+La búsqueda NO debe limitarse a una especie concreta.
+
+Si hay artículos en fresa, priorizarlos.
+Si no, usar otras especies vegetales.
+
+Lo importante es que el artículo trate directamente sobre el gen o un ortólogo funcional claro.
+
+---
+
+## Fuentes bibliográficas permitidas (máxima prioridad)
+
+* PubMed / NCBI
+* Frontiers in Plant Science
+* ScienceDirect
+* Springer
+* Wiley
+* Nature
+* Plant Physiology
+* The Plant Journal
+* Journal of Experimental Botany
+* BMC Plant Biology
+* Scielo
+
+---
+
+## Fuentes secundarias (solo si no hay suficiente información)
+
+* PMC
+* Google Scholar
+
+---
+
+# REQUISITO CRÍTICO SOBRE LA FUNCIÓN GÉNICA
+
+No quiero funciones vagas o demasiado generales.
+
+Ejemplos NO válidos:
+
+* stress response
+* signal transduction
+* cell wall organization
+
+Ejemplos válidos:
+
+* degradación de celulosa
+* remodelación de xiloglucanos
+* síntesis de lignina
+* modificación de pectinas
+* biosíntesis de prolina osmoprotectora
+* transporte Na+/H+
+* detoxificación de ROS
+* regulación ABA dependiente de cierre estomático
+* transporte de agua por acuaporinas
+
+La función debe ser lo más específica y mecanística posible.
+
+---
+
+# SALIDA REQUERIDA — UP_genes
+
+Generar un archivo/tablas separados para UP con:
+
+## Tabla 1 — Función de genes UP
+
+Columnas:
+
+* Gene_ID
+* Gene_name
+* Functional_family
+* Conserved_domains
+* Molecular_function
+* Biological_process
+* Pathway
+* Orthologs
+* Functional_description_specific
+* Evidence_level
+
+---
+
+## Tabla 2 — Artículos específicos genes UP
+
+Columnas:
+
+* Gene_ID
+* Article_title
+* Year
+* Journal
+* DOI
+* PMID
+* URL
+* Species
+* Study_type
+* Main_findings
+* Specific_mechanistic_function
+* Evidence_level
+
+---
+
+# SALIDA REQUERIDA — DOWN_genes
+
+Generar un archivo/tablas separados para DOWN con:
+
+## Tabla 1 — Función de genes DOWN
+
+Mismas columnas.
+
+---
+
+## Tabla 2 — Artículos específicos genes DOWN
+
+Mismas columnas.
+
+---
+
+# PARTE 3 — Base general de estrés osmótico
+
+Construir una base bibliográfica paralela con artículos sobre:
+
+* osmotic stress
+* drought stress
+* salinity stress
+* ABA signaling
+* ROS signaling
+* calcium signaling
+* osmotic adjustment
+* ion transport
+* aquaporins
+* LEA proteins
+* dehydrins
+* cell wall remodeling
+* antioxidant defense
+* photosynthesis under stress
+* root adaptation
+* growth recovery
+
+---
+
+## Salida requerida
+
+Tabla con:
+
+* Article_title
+* Year
+* Journal
+* DOI
+* PMID
+* URL
+* Main_topic
+* Main_findings
+* Biological_processes
+
+---
+
+# REQUISITO DE TRAZABILIDAD
+
+Toda función asignada debe estar respaldada por referencias verificables.
+
+Cada referencia debe incluir al menos:
+
+* DOI
+* PMID
+* URL oficial
+
+Debo poder acceder directamente a cada fuente.
+
+No acepto afirmaciones sin referencia.
+
+---
+
+# PRIORIDAD DE CALIDAD
+
+Priorizar:
+
+1. Evidencia experimental directa
+2. Reviews de alto impacto
+3. Bases funcionales
+
+---
+
+# OBJETIVO FINAL
+
+La finalidad de esta base de datos es servir como fuente local única para un análisis posterior de interpretación biológica.
+
+Por tanto:
+
+Prioriza precisión, profundidad mecanística, trazabilidad y evidencia sólida por encima de rapidez o cantidad.

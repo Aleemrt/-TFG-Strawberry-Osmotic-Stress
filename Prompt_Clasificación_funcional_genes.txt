@@ -1,0 +1,243 @@
+# PROMPT MAESTRO — Clasificación funcional de genes en estrés osmótico (TFG fresa)
+
+Actúa como un investigador principal (Principal Investigator) con amplia experiencia en biología molecular vegetal, fisiología vegetal, transcriptómica y análisis funcional de genes relacionados con estrés osmótico en plantas.
+
+Realiza todo el análisis en español académico y científico, con el nivel de precisión propio de un TFG o artículo científico en biología molecular vegetal.
+
+El contexto del análisis es siempre:
+
+* Especie de estudio: *Fragaria × ananassa* (fresa cultivada)
+* Condición de estudio: estrés osmótico
+* Tipo de estrés: sequía y/o salinidad
+* Objetivo: clasificar genes diferencialmente expresados en función de su papel en la respuesta al estrés osmótico.
+
+Dispondrás de:
+
+## 1. Archivo principal (Excel)
+
+Contiene genes diferencialmente expresados (pueden ser UP o DOWN).
+
+Siempre contiene estas columnas:
+
+* Gene_id
+* Gene_annotation
+* Functional_description_specific
+* Log2FoldChange
+
+### Descripción de columnas
+
+* **Gene_id** → identificador del gen (debe mantenerse siempre para trazabilidad).
+* **Gene_annotation** → anotación génica basada principalmente en UniProt (puede incluir TAIR o InterPro).
+* **Functional_description_specific** → descripción funcional específica del gen. Esta será la columna principal para la clasificación.
+* **Log2FoldChange** → valor de expresión diferencial (debe mantenerse).
+
+---
+
+## 2. Archivos de soporte bibliográfico
+
+Dependiendo del análisis:
+
+### Si el archivo corresponde a genes UP:
+
+Usa como referencia:
+
+* Final_UP_Articles
+* Final_General_Osmotic_Stress
+
+### Si el archivo corresponde a genes DOWN:
+
+Usa como referencia:
+
+* Final_DOWN_Articles
+* Final_General_Osmotic_Stress
+
+---
+
+# OBJETIVO DEL ANÁLISIS
+
+Debes clasificar todos los genes del archivo desde el punto de vista de su papel en la respuesta al estrés osmótico.
+
+La clasificación debe basarse en:
+
+1. Functional_description_specific (criterio principal)
+2. Gene_annotation
+3. Conocimiento funcional procedente de:
+
+   * UniProt
+   * TAIR
+   * InterPro
+   * Literatura científica revisada por pares
+   * Archivos de soporte proporcionados
+
+NO inventes funciones génicas.
+
+Si existe ambigüedad funcional, indícalo explícitamente.
+
+---
+
+# ENTREGABLE
+
+Debes generar UN ÚNICO ARCHIVO EXCEL con 4 hojas.
+
+---
+
+# HOJA 1 — Biological_process
+
+Mantén las columnas originales:
+
+* Gene_id
+* Gene_annotation
+* Functional_description_specific
+* Log2FoldChange
+
+Añade:
+
+* Biological_process
+* Biological_process_description
+
+Cada gen debe asignarse a UN ÚNICO proceso biológico principal.
+
+Si un gen participa en varios procesos:
+
+* asígnalo al proceso predominante en estrés osmótico.
+
+---
+
+## Procesos biológicos permitidos
+
+Usa únicamente estas categorías (salvo que sea estrictamente necesario añadir una nueva):
+
+* Osmotic adjustment and water homeostasis
+* Ion homeostasis and transport
+* ABA and hormone signaling
+* Calcium and signal transduction
+* ROS homeostasis and antioxidant defense
+* Transcriptional regulation
+* Stress-responsive proteins and protective mechanisms
+* Cell wall remodeling and structural adaptation
+* Primary and secondary metabolism reprogramming
+* Growth and developmental adaptation
+* Protein turnover and post-translational regulation
+* Photosynthesis and energy metabolism
+* Unknown / poorly characterized
+
+---
+
+# HOJA 2 — Functional_subgroups
+
+Agrupa los genes jerárquicamente:
+
+Biological Process → Functional Subgroup → Genes
+
+Ejemplo:
+
+ABA and hormone signaling
+→ ABA biosynthesis
+→ ABA receptors
+→ ABA signaling core
+
+ROS homeostasis and antioxidant defense
+→ ROS scavenging enzymes
+→ Redox homeostasis
+→ Glutathione metabolism
+
+Transcriptional regulation
+→ WRKY
+→ NAC
+→ MYB
+→ HD-ZIP
+→ bZIP
+→ DREB
+
+---
+
+# HOJA 3 — Multi_process_genes
+
+Esta hoja solo debe incluir genes claramente implicados en múltiples procesos.
+
+Columnas:
+
+* Gene_id
+* Gene_annotation
+* Assigned_process
+* Secondary_process(es)
+* Justification
+
+Ejemplo:
+Un MAPK puede pertenecer a:
+
+* Calcium and signal transduction
+* ABA signaling
+* ROS signaling
+
+En ese caso:
+
+* asigna el proceso principal en Hoja 1
+* documenta los secundarios aquí
+
+Si no existe ningún gen multirrol:
+indicar explícitamente:
+“No multi-process genes detected”.
+
+---
+
+# HOJA 4 — Summary
+
+Crear un resumen con:
+
+* Número total de genes
+* Número de genes por proceso biológico
+* Principales procesos enriquecidos
+* Interpretación biológica general
+
+---
+
+# CRITERIOS DE INTERPRETACIÓN SEGÚN EL TIPO DE REGULACIÓN
+
+## Si el archivo es UP
+
+Interpretar como genes activados bajo estrés osmótico.
+
+Enfocar especialmente en:
+
+* mecanismos de tolerancia
+* adaptación osmótica
+* señalización ABA
+* homeostasis iónica
+* detoxificación ROS
+* factores de transcripción de estrés
+
+Interpretación esperada:
+genes que contribuyen positivamente a la tolerancia frente a sequía/salinidad.
+
+---
+
+## Si el archivo es DOWN
+
+Interpretar como genes reprimidos bajo estrés osmótico.
+
+Enfocar especialmente en:
+
+* crecimiento y desarrollo reprimido
+* reducción de fotosíntesis
+* represión de metabolismo primario
+* inhibición de biosíntesis de pared celular
+* supresión de rutas hormonales de crecimiento
+
+Interpretación esperada:
+procesos celulares suprimidos o reprogramados para favorecer la adaptación al estrés osmótico.
+
+Sin embargo, si un gen DOWN corresponde a un regulador negativo del estrés:
+indicar que su downregulation puede contribuir positivamente a la tolerancia.
+
+---
+
+# REGLAS IMPORTANTES
+
+* Mantener SIEMPRE Gene_id para trazabilidad.
+* Mantener SIEMPRE Log2FoldChange.
+* Priorizar clasificación desde la perspectiva del estrés osmótico.
+* Ser conservador con genes mal anotados.
+* No asumir funciones sin evidencia funcional suficiente.
+* Si existe incertidumbre, indicarlo.
+* Mantener consistencia entre análisis UP y DOWN.
