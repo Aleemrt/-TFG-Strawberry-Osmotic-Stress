@@ -1,0 +1,33 @@
+PROMPT USADO CON NOTEBOOKLM EN UN CUADERNO YA ENTRENADO
+COMO EXPERTO EN EL TEMA DE INTERÉS
+&gt;Find information within the uploaded sources and the articles linked to the
+specific doi found in the sources Final_UP_Articles.cvs and
+Final_DOWN_Articles.cvs. Then open the file UPandDOWN_AM.txt and use
+the gene_id column to correlate the gene with the doi link. Then use the
+gene_annotation column to search for similar information in the uploaded PDFs
+from your sources. ENSURE YOU USE THE 71 GENES. Find the gene
+information for each one of them and group them into functional groups based
+on that (DO NOT USE THE biological_process column. Then provide the
+number of functional groups you have found, and present expression tendency
+and functional description within the theme of osmotic stress for the first group.
+&gt;great, now present expression tendency and functional description within the
+theme of osmotic stress for the second group.
+&gt;next present expression tendency and functional description within the theme
+of osmotic stress for the third group.
+&gt;next present expression tendency and functional description within the theme
+of osmotic stress for the fourth group.
+&gt;next present expression tendency and functional description within the theme
+of osmotic stress for the fifth group.
+&gt;next present expression tendency and functional description within the theme
+of osmotic stress for the sixth group.
+&gt;next present expression tendency and functional description within the theme
+of osmotic stress for the seventh group.
+&gt;next present expression tendency and functional description within the theme
+of osmotic stress for the eighth group.
+&gt;next present expression tendency and functional description within the theme
+of osmotic stress for the ninth group.
+&gt;great. Use the information you just created for the nine groups and generate
+an integrate functional model including the expression tendency of the top two
+genes from each group within the osmotic stress theme.
+&gt;Based on this, how can you can explain that plants under both drought and
+salinity stress showed the exact same transcriptomic changes
